@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" lang="ru">
+    <!--script src="static/js/todo.min.js"></script-->
+    <link rel="stylesheet" href="static/css/todo.css">
+</head>
+<body>
+<div id="app" class="wrapper">
+    <div class="wrapper__inner content">
+        <h1 class="content__header">Дела</h1>
+        <div class="content__app">
+            <ul class="content__list list">
+                <li v-for="(todo, index) in todoList"
+                    v-bind:class="[{ 'list__item_done': todo.done }, 'list__item']">
+                    <label class="list__item">
+                        <input class="list__radio" type="checkbox"
+                               v-model="todo.done"
+                               v-bind:true-value=true
+                               v-bind:false-value=false
+                               v-on:click="changeStatus(index)">
+                        <span class="list__text">{{ todo.text }}</span>
+                    </label>
+                </li>
+            </ul>
+            <form class="content__controls controls">
+                <input id="todoInput" class="controls__field" type="text"
+                       placeholder="Новое дело" v-model="message">
+                <button class="controls__add" type="submit"
+                        v-on:click="addItem(message)">+</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="libs/vue.min.js"></script>
+<script src="../assets/todo.js"></script>
+</body>
+</html>
