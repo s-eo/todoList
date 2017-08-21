@@ -9,21 +9,22 @@ body, html
 
 .wrapper
   background-color: #ffecd6
-  display: flex
-  flex-direction: row
-  align-items: center
   height: 100%
+  line-height: 100vh
+  text-align: center
 
 .wrapper__inner
+  display: inline-block
+  vertical-align: middle
+  line-height: 1.25
+  text-align: left
   //!!!!count more accurate
   min-height: 360px
   //!!!!count more accurate
   min-width: 235px
   max-width: 90%
-  margin: 6em auto 0
-  width: auto
+  width: 35%
   height: 60%
-  position: relative
 
 /* Content block */
 .content
@@ -35,10 +36,10 @@ body, html
 .content__header
   box-sizing: border-box
   margin: 0
-  padding: 1em 0.6em
+  padding: 0.6em 1em
   height: 16%
   border-bottom: 1px solid #d6d6d6
-  font-size: 25px
+  font-size: 1.7
   font-weight: normal
 
 .content__app
@@ -51,7 +52,6 @@ body, html
   list-style: none
 
 .list__item_done
-  text-decoration: line-through
   color: #656565
 
 .list__radio
@@ -60,21 +60,25 @@ body, html
 
 .list__text
   display: block
-  padding-left: 10px
+  padding-left: 1.3em
   //background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAQAAABuW59YAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAB2SURBVHjaAGkAlv8A3QDyAP0A/QD+Dam3W+kCAAD8APYAAgTVZaZCGwwA5wr0AvcA+Dh+7UX/x24AqK3Wg/8nt6w4/5q71wAAVP9g/7rTXf9n/+9N+AAAtpJa/zf/S//DhP8H/wAA4gzWj2P4lsf0JP0A/wADAHB0Ngka6UmKAAAAAElFTkSuQmCC') no-repeat left center
-  background: url("../radioButton.svg") no-repeat
+  background: url("../radioButton.svg") 0 0.05em no-repeat
 
 
 .list__radio:checked + .list__text
   //background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAQAAABuW59YAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAB2SURBVHjaAGkAlv8A3QDyAP0A/QD+Dam3W+kCAAD8APYAAgTVZaZCGwwA5wr0AvcA+Dh+7UX/x24AqK3Wg/8nt6w4/5q71wAAVP9g/7rTXf9n/+9N+AAAtpJa/zf/S//DhP8H/wAA4gzWj2P4lsf0JP0A/wADAHB0Ngka6UmKAAAAAElFTkSuQmCC') no-repeat left center
-  background: url("../radioButton.svg") no-repeat
+  background-image: url("../line.svg"), url("../radioButtonChecked.svg")
+  background-position: 1.3em 0.05em, 0 0.55em
+  background-repeat: repeat-x, no-repeat
 
 
 .content__list
   box-sizing: border-box
   height: 80%
-  overflow-y: scroll
-  padding: 0.3em 2.5em
+  padding: 0 1.7em
+  margin: 0
+  border-bottom: 1px solid #d6d6d6
+  overflow: auto
 
 .content__controls
   box-sizing: border-box
