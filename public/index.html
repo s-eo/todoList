@@ -6,21 +6,6 @@
     <link rel="stylesheet" href="static/css/todo.css">
 </head>
 <body>
-<svg version="1.1"
-     width="21" height="21"
-     xmlns="http://www.w3.org/2000/svg">
-<defs>
-    <g id="radio">
-        <circle cx="10" cy="10" r="10" stroke="black" fill="white"/>
-        <circle cx="10" cy="10" r="4" fill="black" />
-    </g>
-    <g id="radio-done">
-        <circle cx="10" cy="10" r="10" stroke="#656565" fill="white"/>
-        <circle cx="10" cy="10" r="4" fill="#656565" />
-    </g>
-</defs>
-
-</svg>
 <div id="app" class="wrapper">
     <div class="wrapper__inner content">
         <h1 class="content__header">Дела</h1>
@@ -34,16 +19,17 @@
                                v-bind:true-value=true
                                v-bind:false-value=false
                                v-on:click="changeStatus(index)">
-                        <span class="list__text">{{ todo.text }}</span>
+                        <span class="list__text after">{{ todo.text }}</span>
+
                     </label>
                 </li>
             </ul>
-            <form class="content__controls controls">
+            <div class="content__controls controls">
                 <input id="todoInput" class="controls__field" type="text"
-                       placeholder="Новое дело" v-model="message">
-                <button class="controls__add" type="submit"
+                       placeholder="Новое дело" v-model.trim="message" autofocus>
+                <button class="controls__add" type="button"
                         v-on:click="addItem(message)">+</button>
-            </form>
+            </div>
         </div>
     </div>
 </div>
