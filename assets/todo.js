@@ -1,5 +1,4 @@
 function storageIsAvailable(type) {
-    console.log('storageIsAvailable?');
     try {
         var storage = window[type],
             x = '__storage_test__';
@@ -13,21 +12,15 @@ function storageIsAvailable(type) {
 }
 
 function cleanStorage(storageIsAvailable) {
+    //remove done items
     if (storageIsAvailable) {
-        var todoList = JSON.parse(localStorage.getItem('todoList'));
+        var todoList = JSON.parse(localStorage.getItem('todoList')) || [];
         for (var i = todoList.length-1; i >= 0; i--){
             if (todoList[i].done === true) {
-                //todoList.splice(i, 1);
+                todoList.splice(i, 1);
             }
         }
         localStorage.setItem('todoList', JSON.stringify(todoList));
-
-        /*localStorage.setItem('todoList', JSON.stringify([{ text: 'learn AngularJS', done: true }]));
-        var todoList = JSON.parse(localStorage.getItem('todoList'));
-         todoList.push({ text: 'learn AngularJS', done: true });
-         todoList.push({ text: 'build an AngularJS app', done: false });
-         localStorage.setItem('todoList', JSON.stringify(todoList));
-         console.log(localStorage);*/
         return true;
     }
     else {
@@ -41,9 +34,6 @@ function getStorage() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    var store = storageIsAvailable();
-        cleanStorage();
-    console.log(store);
     var vm = new Vue({
         el: '#app',
         data: {
@@ -66,18 +56,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log(index);
                 if (this.storageIsAvailable){
                     var ls = getStorage();
-                    console.log(ls[index].done);
-                    ls[index].done = !this.todoList[index].done;
-                    console.log(ls[index].done);
+                    ls[index].done = !ls[index].done;
                     localStorage.setItem('todoList', JSON.stringify(ls));
                 }
             }
         },
         mounted: function () {
-            this.storageIsAvailable = storageIsAvailable();
+            this.storageIsAvailable = storageIsAvailable('localStorage');
+            console.log('Storage is available? - ' + this.storageIsAvailable);
+            cleanStorage(this.storageIsAvailable);
             this.todoList = getStorage();
             console.log("mounted");
-            //document.getElementById('todoInput').focus();
 
         },
         updated: function () {

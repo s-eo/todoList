@@ -9,12 +9,13 @@
   "author": "Elena Skakovskaya",
   "license": "MIT",
   "dependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "npm": "^6.1.0"
   },
   "devDependencies": {
-    "gulp-csso": "^3.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
+    "gulp-csso": "^3.0.1",
+    "gulp-rename": "^1.2.3",
+    "gulp-sass": "^3.2.1",
     "gulp-uglify": "^3.0.0"
   }
 }
